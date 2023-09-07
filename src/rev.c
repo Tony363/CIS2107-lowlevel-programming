@@ -4,20 +4,21 @@
 #include <math.h>
 /*
 Tony Siu
-
+9/7/2023
+CIS 2107
+Lab 2: Paycheck and revenue
 */
 
-int take_input(){
-    char *invalid = "\t\tThis is not a valid input\n\t\tPlease run the program again";
+int take_input(char* item){
     double input,frac_part,int_part;
     scanf("%lf",&input);
     frac_part = modf(input,&int_part);
     if (!(frac_part == 0.0)){
-        printf("%s",invalid);
+        printf("\t\tThis is not a valid %s\n\t\tPlease run the program again",item);
         exit(0);
     }
     if(input < 0){
-        printf("%s",invalid);
+        printf("\t\tThis is not a valid %s\n\t\tPlease run the program again",item);
         exit(0);
     } 
     return (int)input;
@@ -38,9 +39,9 @@ double discount(int quantity){
 void revenue(){
     float item_price,quanity,discount_percent;
     printf("\t\tEnter item price: ");
-    item_price = take_input();
+    item_price = take_input("item price");
     printf("\t\tEnter quanity: ");
-    quanity = take_input();
+    quanity = take_input("quantity order");
     printf("\n");
     printf("\t\tThe item price is: $%lf\n",item_price);
     printf("\t\tThe order is: %d\n items(s)",(int)quanity);
