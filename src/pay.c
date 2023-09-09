@@ -1,30 +1,12 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <ctype.h>
-#include <math.h>
+#include "includes/payrev.h"
+
 /*
 Tony Siu
 9/7/2023
 CIS 2107
 Lab 2: Paycheck and revenue
 */
-
-int take_input(char* item){
-    double input,frac_part,int_part;
-    scanf("%lf",&input);
-    frac_part = modf(input,&int_part);
-    if (!(frac_part == 0.0)){
-        printf("\t\tThis is not a valid %s\n\t\tPlease run the program again",item);
-        exit(0);
-    }
-    if(input < 0){
-        printf("\t\tThis is not a valid %s\n\t\tPlease run the program again",item);
-        exit(0);
-    } 
-    return (int)input;
-}
-
-
 
 void pay(){
     int employee_num,hour_salary,weekly_time;
