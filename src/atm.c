@@ -18,10 +18,10 @@ int validate_deposit(double frac_part,int input){
     return (frac_part == 0 && input > 0 && input < 10000);
 }
 
-double prompt_input(int (*return_check)(double,int)){
+double prompt_input(char* prompt_message, int (*return_check)(double,int)){
     double frac_part,int_part,input = 0.0;
     int prompts_num = 0;
-    printf("Please enter input: ");
+    printf("%s",prompt_message);
     while (scanf("%lf",&input) == 1 && prompts_num < 3){
         frac_part = modf(input,&int_part);
         if (return_check(frac_part,input))
@@ -56,18 +56,18 @@ void quit(int transactions){
 };
 
 void menu(int trans_num,int nana_pin,double cur_trans_value,double init_balance,int (*return_check)(double,int)){    
-    printf("Please enter your command\n\tEnter 1 for cash withdrawal\n\tEnter 2 for cash deposition\n\tEnter 3 to check balance\n\tEnter 4 to exit\n");
     return_check = validate_menu;
-    int choice = (int)prompt_input(return_check);
+    char *menu_prompt = "Please enter your command\n\tEnter 1 for cash withdrawal\n\tEnter 2 for cash deposition\n\tEnter 3 to check balance\n\tEnter 4 to exit\n";
+    int choice = (int)prompt_input(menu_prompt,return_check);
 
     while (choice){
         if (choice == 1){
             return_check = validate_withrawal;
-            init_balance = cash_withdrawal(init_balance,prompt_input(return_check));
+            init_balance = cash_withdrawal(init_balance,prompt_input("Please enter amount to withdraw: ",return_check));
         }
         if (choice == 2){
             return_check = validate_deposit;
-            init_balance = cash_deposition(init_balance,prompt_input(return_check));
+            init_balance = cash_deposition(init_balance,prompt_input("Please enter amount to deposit: ",return_check));
         }
         if (choice == 3){
             balance(init_balance);
@@ -77,7 +77,7 @@ void menu(int trans_num,int nana_pin,double cur_trans_value,double init_balance,
             quit(trans_num);
         trans_num ++;
         return_check = validate_menu;
-        choice = (int)prompt_input(return_check);
+        choice = (int)prompt_input(menu_prompt,return_check);
     };
 };
 
@@ -86,9 +86,8 @@ int main (int argc, char const *argv[]){
     int nana_pin = 3014;
     double cur_trans_value = 0;
     double init_balance = 5000;
-    printf("Please enter your pin # to continue\n");
     int (*return_check)(double,int) = validate_pin;
-    prompt_input(return_check);
+    prompt_input("Please enter your pin # to continue ",return_check);
     menu(trans_num,nana_pin,cur_trans_value,init_balance,return_check);
     return 0;
 }
