@@ -8,6 +8,7 @@ CIS 2107
 Lab 2: Paycheck and revenue
 */
 
+// prints for interface
 void pay(){
     int employee_num,hour_salary,weekly_time;
     float overtime_pay, regular_pay = 0;
