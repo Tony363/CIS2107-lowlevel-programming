@@ -3,7 +3,7 @@
 #include<math.h>
 
 int take_input(char* item,char* interface){
-    double input,frac_part,int_part;
+    double input,frac_part,int_part = 0.0;
     scanf("%lf",&input);
     frac_part = modf(input,&int_part);
     if (!(frac_part == 0.0) ^ input < 0 || (!(frac_part == 0.0) && input < 0)){ // if the input is not an integer
