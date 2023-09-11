@@ -6,16 +6,11 @@ int take_input(char* item,char* interface){
     double input,frac_part,int_part;
     scanf("%lf",&input);
     frac_part = modf(input,&int_part);
-    if (!(frac_part == 0.0)){ // if the input is not an integer
+    if (!(frac_part == 0.0) ^ input < 0 || (!(frac_part == 0.0) && input < 0)){ // if the input is not an integer
         printf("\t\tThis is not a valid %s\n\t\tPlease run the program again\n",item);
         printf("\nThank you for using %s \n\n",interface);
         exit(0);
     }
-    if(input < 0){ // if the input is a negative number
-        printf("\t\tThis is not a valid %s\n\t\tPlease run the program again\n",item);
-        printf("\nThank you for using %s \n\n",interface);
-        exit(0);
-    } 
     return (int)input;
 }
 
