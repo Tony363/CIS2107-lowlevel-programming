@@ -10,13 +10,13 @@ CIS 2107
 Lab 2: Paycheck and revenue
 */
 
-
+// prints for interface
 void revenue(){
     float item_price,quanity,discount_percent;
     printf("\t\tEnter item price: ");
-    item_price = take_input("item price");
+    item_price = take_input("item price","\"TEMPLE\" store");
     printf("\t\tEnter quanity: ");
-    quanity = take_input("quantity order");
+    quanity = take_input("quantity order","\"TEMPLE\" store");
     printf("\n");
     printf("\t\tThe item price is: $%lf\n",item_price);
     printf("\t\tThe order is: %d items(s)\n",(int)quanity);

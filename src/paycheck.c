@@ -13,11 +13,11 @@ void pay(){
     int employee_num,hour_salary,weekly_time;
     float overtime_pay, regular_pay = 0;
     printf("\t\tEnter Employee Number: ");
-    employee_num = take_input("Employee Number");
+    employee_num = take_input("Employee Number","\"TEMPLE HUMAN RESOURCES\"");
     printf("\t\tEnter Hourly Salary:");
-    hour_salary = take_input("hourly salary amount");
+    hour_salary = take_input("hourly salary amount","\"TEMPLE HUMAN RESOURCES\"");
     printf("\t\tEnter Weekly Time: ");
-    weekly_time = take_input("weekly time worked");
+    weekly_time = take_input("weekly time worked","\"TEMPLE HUMAN RESOURCES\"");
     printf("\t\t========================\n");
     printf("\t\tEmployee Number #: %d\n",employee_num);
     printf("\t\tHourly Salary: $%lf\n",(double)hour_salary);
