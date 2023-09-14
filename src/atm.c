@@ -3,8 +3,12 @@
 #include <math.h>
 
 /*
-
+Tony Siu
+9/14/2023
+CIS 2107
+Lab 3: ATM
 */
+
 unsigned int validate_pin(double frac_part,unsigned int input){
     return (input == 3014);
 }
@@ -96,6 +100,9 @@ void menu(int trans_num,int nana_pin,double cur_trans_value,double init_balance)
 };
 
 int main (int argc, char const *argv[]){
+    /*
+    gcc -o executables/atm -g src/atm.c  -lm
+    */
     int trans_num = 0;
     double cur_trans_value = 0;
     double init_balance = 5000;
