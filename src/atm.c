@@ -101,6 +101,7 @@ void menu(int trans_num,int nana_pin,double cur_trans_value,double init_balance)
 
 int main (int argc, char const *argv[]){
     /*
+    run from CIS2107-lowlevel-programming directory
     gcc -o executables/atm -g src/atm.c  -lm
     */
     int trans_num = 0;
