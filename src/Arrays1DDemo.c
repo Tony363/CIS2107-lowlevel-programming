@@ -8,6 +8,7 @@ void reverseArray(int array[], int size);
 void reverseSelectedRangeWithinArray(int array[],int size,int startRange,int endRange);
 int findSequence(int arr[],int size,int tom,int jerry);
 
+// gcc -o executables/arrays -g src/Arrays1DDemo.c
 int main(){
     unsigned int size = 10;
     int arr[10] = {0};
@@ -27,7 +28,7 @@ int main(){
         printf("%d ",arr[i]);
     }
     printf("\n");
-    printf("sequence: %d\n",findSequence(arr,10,0,10));
+    printf("sequence: %d\n",findSequence(arr,size,0,10));
     return 0;
 }
 
@@ -78,12 +79,13 @@ void reverseSelectedRangeWithinArray(int array[],int size,int startRange,int end
 int findSequence(int arr[],int size,int tom,int jerry){
     int tom_found,jerry_found = -1;
     for (int i = 0;i < size;i++){
-        if (tom_found && jerry_found)
+        if (tom_found > -1 && jerry_found > -1)
             return tom_found;
-        if (!tom && arr[i] == tom)
+        if (tom != -1 && arr[i] == tom)
             tom_found = i;
-        if (!jerry && arr[i] == jerry)
+        if (jerry != -1 && arr[i] == jerry)
             jerry_found = i;
+        // printf("%d %d %d %d\n",arr[i],tom_found,jerry_found,(tom_found > -1 && jerry_found > -1));
     }
     return -1;
 }
