@@ -6,7 +6,8 @@ void fillArray(int arr[],unsigned int size,int rand_min,int rand_max);
 int findWithRange(int array[],unsigned int size,unsigned int lowSelectedRange,unsigned int highSelectedRange);
 void reverseArray(int array[], int size);
 void reverseSelectedRangeWithinArray(int array[],int size,int startRange,int endRange);
-int findSequence(int arr[],int size,int tom,int jerry);
+int findSequence(int arr[],unsigned int size,int tom,int jerry);
+
 
 // gcc -o executables/arrays -g src/Arrays1DDemo.c
 int main(){
@@ -28,7 +29,8 @@ int main(){
         printf("%d ",arr[i]);
     }
     printf("\n");
-    printf("sequence: %d\n",findSequence(arr,size,0,10));
+    printf("No 10 0 tom jerry pair %d\n",findSequence(arr,size,0,10));
+    printf("Tom jerry pair from %d index\n",findSequence(arr,size,arr[4],arr[5]));
     return 0;
 }
 
@@ -75,17 +77,11 @@ void reverseSelectedRangeWithinArray(int array[],int size,int startRange,int end
     }
 }
 
-// ??????
-int findSequence(int arr[],int size,int tom,int jerry){
-    int tom_found,jerry_found = -1;
-    for (int i = 0;i < size;i++){
-        if (tom_found > -1 && jerry_found > -1)
-            return tom_found;
-        if (tom != -1 && arr[i] == tom)
-            tom_found = i;
-        if (jerry != -1 && arr[i] == jerry)
-            jerry_found = i;
-        // printf("%d %d %d %d\n",arr[i],tom_found,jerry_found,(tom_found > -1 && jerry_found > -1));
+// find tom jerry pair in array
+int findSequence(int arr[],unsigned int size,int tom,int jerry){
+    for (int i = 1;i < size;i++){
+        if (arr[i-1] == tom && arr[i] == jerry)
+            return i-1;   
     }
     return -1;
 }
