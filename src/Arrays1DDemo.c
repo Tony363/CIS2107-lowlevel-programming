@@ -1,11 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+/*
+Tony Siu
+9/14/2023
+CIS 2107
+Lab 4: Arrays
+*/
 // function prototypes
 void fillArray(int arr[],unsigned int size,int rand_min,int rand_max);
 int findWithRange(int array[],unsigned int size,unsigned int lowSelectedRange,unsigned int highSelectedRange);
-void reverseArray(int array[], int size);
-void reverseSelectedRangeWithinArray(int array[],int size,int startRange,int endRange);
+void reverseArray(int array[], unsigned int size);
+void reverseSelectedRangeWithinArray(int array[],unsigned int size,unsigned int startRange,unsigned int endRange);
 int findSequence(int arr[],unsigned int size,int tom,int jerry);
 
 
@@ -56,7 +61,7 @@ int findWithRange(int array[],unsigned int size,unsigned int lowSelectedRange,un
 }
 
 // reverse the order of the elements in an array
-void reverseArray(int array[], int size){
+void reverseArray(int array[], unsigned int size){
     int temp,i = 0;
     for(; i < size/2; i++){
         temp = array[i];
@@ -66,7 +71,7 @@ void reverseArray(int array[], int size){
 }
 
 // reverse the order of the elements in an array within a range of indices
-void reverseSelectedRangeWithinArray(int array[],int size,int startRange,int endRange){
+void reverseSelectedRangeWithinArray(int array[],unsigned int size,unsigned int startRange,unsigned int endRange){
     if (endRange > size || startRange < 0 || startRange > endRange)
         return ;
     int temp,i = 0;
@@ -79,7 +84,7 @@ void reverseSelectedRangeWithinArray(int array[],int size,int startRange,int end
 
 // find tom jerry pair in array
 int findSequence(int arr[],unsigned int size,int tom,int jerry){
-    for (int i = 1;i < size;i++){
+    for (unsigned int i = 1;i < size;i++){
         if (arr[i-1] == tom && arr[i] == jerry)
             return i-1;   
     }
