@@ -39,11 +39,12 @@ int main(){
 
 
 void print_array(int arr[],unsigned int size){
+    printf("%c\n",'[');
     for(unsigned int i = 0; i < size; i++){
-        if (i % 10 == 0) puts("");
-        printf("%4d",arr[i]);
+        if (!(i % 10) && i != 0) puts("");
+        printf("%4d,",arr[i]);
     }
-    puts("\n");
+    puts("\n]\n");
 }
 
 // fill array with random numbers between min and max
