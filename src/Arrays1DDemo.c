@@ -91,6 +91,8 @@ void reverseSelectedRangeWithinArray(int array[],unsigned int size,unsigned int 
 
 // find tom jerry pair in array
 int findSequence(int arr[],unsigned int size,int tom,int jerry){
+    if (size < 2)
+        return -1;
     for (unsigned int i = 1;i < size;i++){
         if (arr[i-1] == tom && arr[i] == jerry)
             return i-1;   
