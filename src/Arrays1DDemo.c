@@ -22,16 +22,21 @@ int findSequence(int arr[],unsigned int size,int tom,int jerry);
 int main(){
     unsigned int size = 40;
     int arr[40] = {0};
+
     fillArray(arr,size,0,size);
     puts("Output random filled array");
     print_array(arr,size);
+    
     printf("max between index %d - %d: %d\n\n",5,10,findWithRange(arr,size,5,10));
+    
     reverseArray(arr,size);
     puts("Output array after reversing");
     print_array(arr,size);
+    
     puts("Output reversing selected range within array");
     reverseSelectedRangeWithinArray(arr,size,0,5);
     print_array(arr,size);
+    
     printf("No (%d,%d) tom jerry pair %d\n",0,10,findSequence(arr,size,0,10));
     printf("Tom jerry pair (%d,%d) from index %d\n",arr[4],arr[5],findSequence(arr,size,arr[4],arr[5]));
     return 0;
