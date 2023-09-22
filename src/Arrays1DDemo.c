@@ -42,8 +42,12 @@ int main(){
     return 0;
 }
 
-
+// function to print array
 void print_array(int arr[],unsigned int size){
+    if (!size){
+        puts("[]");
+        return;
+    }
     printf("%c\n",'[');
     for(unsigned int i = 0; i < size; i++){
         if (!(i % 10) && i != 0) puts("");
@@ -65,7 +69,6 @@ int findWithRange(int array[],unsigned int size,unsigned int lowSelectedRange,un
     if (highSelectedRange > size || lowSelectedRange < 0 || lowSelectedRange > highSelectedRange)
         return -1;
     int max = 0;
-
     for(unsigned int i = 0; (lowSelectedRange + i) < highSelectedRange; i++){
         if(array[lowSelectedRange + i] > max)
             max = array[lowSelectedRange + i];
