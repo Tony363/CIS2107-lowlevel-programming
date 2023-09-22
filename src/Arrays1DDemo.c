@@ -10,10 +10,11 @@ Lab 4: Arrays
 
 
 // function prototypes
+void print_array(int arr[],unsigned int size);
 void fillArray(int arr[],unsigned int size,int rand_min,int rand_max);
-int findWithRange(int array[],unsigned int size,unsigned int lowSelectedRange,unsigned int highSelectedRange);
 void reverseArray(int array[], unsigned int size);
 void reverseSelectedRangeWithinArray(int array[],unsigned int size,unsigned int startRange,unsigned int endRange);
+int findWithRange(int array[],unsigned int size,unsigned int lowSelectedRange,unsigned int highSelectedRange);
 int findSequence(int arr[],unsigned int size,int tom,int jerry);
 
 
@@ -23,29 +24,26 @@ int main(){
     int arr[40] = {0};
     fillArray(arr,size,0,size);
     puts("Output random filled array");
-    for(int i = 0; i < size; i++){
-        if (i % 10 == 0) printf("\n");
-        printf("%d ",arr[i]);
-    }
-    printf("\n\n");
+    print_array(arr,size);
     printf("max between index %d - %d: %d\n\n",5,10,findWithRange(arr,size,5,10));
     reverseArray(arr,size);
     puts("Output array after reversing");
-    for(int i = 0; i < size; i++){
-        if (i % 10 == 0) printf("\n");
-        printf("%d ",arr[i]);
-    }
-    printf("\n\n");
+    print_array(arr,size);
     puts("Output reversing selected range within array");
     reverseSelectedRangeWithinArray(arr,size,0,5);
-    for(int i = 0; i < size; i++){
-        if (i % 10 == 0) printf("\n");
-        printf("%d ",arr[i]);
-    }
-    printf("\n\n");
+    print_array(arr,size);
     printf("No (%d,%d) tom jerry pair %d\n",0,10,findSequence(arr,size,0,10));
     printf("Tom jerry pair (%d,%d) from index %d\n",arr[4],arr[5],findSequence(arr,size,arr[4],arr[5]));
     return 0;
+}
+
+
+void print_array(int arr[],unsigned int size){
+    for(unsigned int i = 0; i < size; i++){
+        if (i % 10 == 0) puts("");
+        printf("%4d",arr[i]);
+    }
+    puts("\n");
 }
 
 // fill array with random numbers between min and max
