@@ -5,7 +5,7 @@
 int max(int **arr,size_t row, size_t col);
 int rowSum(int **arr,size_t row,size_t col);
 int columnSum(int **arr, size_t col_idx, size_t row);
-int isSquare(int **arr);
+int isSquare(size_t row, size_t col);
 void displayOutputs(int **arr,size_t row,size_t col);
 
 int get_array(size_t row,size_t col);
@@ -17,19 +17,23 @@ int main(){
     scanf("How many rows? %zu",&row);
     scanf("How many columns? %zu",&col);
     int **arr = get_array(row,col);
+
     printf("Sum of row 1 = %d",rowSum(arr,1,col));
     printf("Sum of row 2 = %d",rowSum(arr,2,col));
     puts("");
     printf("Sum of column 1 = %d",rowSum(arr,1,col));
     printf("Sum of column 2 = %d",rowSum(arr,2,col));
     printf("Sum of column 3 = %d",rowSum(arr,3,col));
+
+    printf("This is %s array.\n",isSquare(row,col) ? "square" : "not square");
     displayOutputs(arr,row,col);
+    deallocate_array(arr);
     return 0;
 }
 
 // TODO why need this?
-int isSquare(int **arr){
-
+int isSquare(size_t row, size_t col){
+    return row == col;
 }
 
 void displayOutputs(int **arr,size_t row,size_t col){
