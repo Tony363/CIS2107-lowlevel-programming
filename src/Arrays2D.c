@@ -18,20 +18,15 @@ int main(){
     scanf("%zu",&row);
     printf("%s","How many columns? ");
     scanf("%zu",&col);
+
     int **arr = get_array(row,col);
-
-    // int sum = rowSum(arr,1,col);
-    // printf("Sum of row 1 = %d",sum);
-    // sum = rowSum(arr,2,col);
-    // printf("Sum of row 2 = %d",sum);
-    // puts("");
-
-    // sum = columnSum(arr,1,col);
-    // printf("Sum of column 1 = %d",sum);
-    // sum = (int)columnSum(arr,2,col);
-    // printf("Sum of column 2 = %d",sum);
-    // sum = (int)columnSum(arr,3,col);
-    // printf("Sum of column 3 = %d",sum);
+    puts("");
+    printf("Sum of row 1 = %d\n",rowSum(arr,0,col));
+    printf("Sum of row 2 = %d\n",rowSum(arr,1,col));
+    puts("");
+    printf("Sum of column 1 = %d\n",columnSum(arr,0,col));
+    printf("Sum of column 2 = %d\n",columnSum(arr,1,col));
+    puts("");
 
     printf("This is %s array.\n",isSquare(row,col) ? "square" : "not square");
     displayOutputs(arr,row,col);
@@ -49,7 +44,7 @@ void displayOutputs(int **arr,size_t row,size_t col){
     for (size_t i = 0; i < row; i++){
         printf("%c",'[');
         for (size_t j = 0; j < col; j++){
-            printf("%4d,",arr[i][j]);
+            printf("%2d,",arr[i][j]);
         }
         printf("%c\n",']');
     }
@@ -67,11 +62,10 @@ int max(int **arr,size_t row, size_t col){
 
 int rowSum(int **arr,size_t row_idx,size_t col){
     int sum = 0;
-    for (size_t i = 0; i < col; i++){
+    for (size_t i = 0; i < col; i++)
         sum = sum + arr[row_idx][i];
-    }
     return sum;
-};
+}
 
 int columnSum(int **arr, size_t col_idx, size_t row){
     int sum = 0;
