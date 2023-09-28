@@ -13,10 +13,10 @@ void demo(size_t row, size_t col);
 
 
 int main(){
-    puts("Let's create a 2Dim array");
-    printf("%s","How many rows? ");
+    puts("Let's create a 2Dim array!\n");
+    printf("%s","\tHow many rows? ");
     scanf("%zu",&row);
-    printf("%s","How many columns? ");
+    printf("%s","\tHow many columns? ");
     scanf("%zu",&col);
 
     demo(row,col);
@@ -25,7 +25,7 @@ int main(){
 
 // display 2d array
 void displayOutputs(int arr[][col],size_t row,size_t col){
-    puts("Here is yiour 2Dim array:");
+    puts("Here is your 2Dim array:\n");
     for (size_t i = 0; i < row; i++){
         printf("%c",'[');
         for (size_t j = 0; j < col; j++){
@@ -40,10 +40,11 @@ void demo(size_t row, size_t col){
     int arr[row][col];
     for (size_t i = 0; i < row; i++){
         for (size_t j = 0; j < col; j++){
-            printf("enter [%lu][%lu] ",i,j);
+            printf("\tenter [%lu][%lu] ",i,j);
             scanf("%d",&arr[i][j]);
         }
     }
+    puts("");
     printf("Max of array is %d\n",max(arr,row,col));
     puts("");
     for (size_t i = 0; i < row; i++)
@@ -52,8 +53,8 @@ void demo(size_t row, size_t col){
     for (size_t i = 0; i < col; i++)
         printf("Sum of column %lu = %d\n",i,columnSum(arr,i,col));
     puts("");
-
     printf("This is %s array.\n",isSquare(row,col) ? "square" : "not square");
+    puts("");
     displayOutputs(arr,row,col);
 }
 
