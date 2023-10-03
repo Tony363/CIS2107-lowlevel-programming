@@ -16,12 +16,14 @@ int main(){
 // write function to count consonants in a string
 int count_consonants(char* input){
     int count = 0;
+    char ith = '\n';
     for (int i = 0; input[i] != '\0'; i++){
-        if (tolower(input[i]) != 'a'
-         && tolower(input[i]) != 'e' 
-         && tolower(input[i]) != 'i' 
-         && tolower(input[i]) != 'o' 
-         && tolower(input[i]) != 'u')
+        ith = tolower(input[i]);
+        if (ith != 'a'
+         && ith != 'e' 
+         && ith != 'i' 
+         && ith != 'o' 
+         && ith != 'u')
             count++;
     }
     return count;
