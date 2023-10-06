@@ -1,6 +1,6 @@
 /* 
-Name: 
-Date:
+Name: Tony Siu
+Date: 10/6/2021
 Course: CSI2107 
 HW#: Lab 05: ““Arrays of Pointers to Functions” 
 
