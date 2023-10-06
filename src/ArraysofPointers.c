@@ -18,6 +18,7 @@ grades for individual students in a 2D matrix and determining the minimum, maxim
 #include <stdlib.h>
 
 int student, exams = 0;
+typedef void (*menu_choice)(int,int,int**);
 
 void printArray(int students, int exams, int**grades);
 void minimum(int students, int exams, int**grades);
@@ -36,20 +37,26 @@ int main()
     printf("%s","\tHow many exams? ");
     scanf("%d",&exams);
     int** studentGrades = get_array(student,exams);
-    void (*processGrades[4])(int, int, int**) = {printArray,minimum,maximum,average};
-
+    puts("");
+    // void (*processGrades[4])(int, int, int**) = {printArray,minimum,maximum,average};
+    // void *(*processGrades)(int, int, int**) = NULL;
+    // processGrades = (void *(*)(int, int, int**))malloc(4 * sizeof(void *));
+    menu_choice processGrades[4] = {printArray,minimum,maximum,average};
     size_t choice = 0;
     menu();
     while(scanf("%lu",&choice) == 1 && choice != 4){
-        if (choice < 0 && choice > 4){
-            puts("Invalid entry");
+        if (choice < 0 || choice > 4){
+            puts("Invalid entry\n");
+            menu();
             continue;
         }
-        menu();
+        // (*(processGrades + choice))(student,exams,studentGrades);
         processGrades[choice](student,exams,studentGrades);
+        menu();
     }
     puts("exiting program...");
     deallocate_array(studentGrades,student);
+    // free(processGrades);
     return 0;
 }
 
@@ -97,6 +104,7 @@ void average(int students, int exams, int **grades){
         printf("The average grade for student %lu is %.2lf\n",i,total/exams);
         total = 0;
     }
+    puts("");
 }
 
 void menu(void){
