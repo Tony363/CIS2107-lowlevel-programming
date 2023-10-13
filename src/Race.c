@@ -41,6 +41,7 @@ int main(){
         printRace(hPos,tPos,track);
         puts("");
         move = randomNumberGenerator();
+        printf("%d %d\n",hPos,tPos);	//debugging
     }
     if (hPos == tPos == 70)
         puts("\tRace Draw");
@@ -52,13 +53,19 @@ int main(){
 
 // out of bounds handler
 int min(int Pos,int incre){
-    return ((Pos + incre) > 70) ? 70 - Pos : incre;    
+    if ((Pos + incre) > 70) 
+        return 70 - Pos;
+    else if ((Pos + incre) < 1)
+        return 1 - Pos;
+    else 
+        return incre;    
 }
 
 //Prints the position of the H and T
 void printRace(int hPos,int tPos,char* track){
     if (hPos == tPos){
-        puts("\tOUCH!");
+        printf("\t%*c", hPos, ' ');
+        puts("OUCH!");
         return;
     }
     track[hPos-1] = 'H';
