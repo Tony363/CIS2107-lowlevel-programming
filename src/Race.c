@@ -39,7 +39,6 @@ int main(){
         tortMove(&tPos,move);
 
         printRace(hPos,tPos,track);
-        puts("");
         move = randomNumberGenerator();
     }
     if (hPos == tPos == 70)
