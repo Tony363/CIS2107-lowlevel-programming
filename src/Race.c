@@ -21,7 +21,6 @@ int min(int Pos, int incre);
 
 int main(){
     srand((unsigned)time(NULL));
-
     int hPos = 1;						//hare start position is 1, cannot slip past 1
     int tPos = 1;						//tortoise start position is 1, cannot slip past 1
 
@@ -35,13 +34,13 @@ int main(){
 
     int move = randomNumberGenerator();
     while(hPos != 70 && tPos != 70){
-        // sleep(1);						//slows down the race
+        sleep(1);						//slows down the race
         hareMove(&hPos,move);
         tortMove(&tPos,move);
+
         printRace(hPos,tPos,track);
         puts("");
         move = randomNumberGenerator();
-        printf("%d %d\n",hPos,tPos);	//debugging
     }
     if (hPos == tPos == 70)
         puts("\tRace Draw");
@@ -53,12 +52,11 @@ int main(){
 
 // out of bounds handler
 int min(int Pos,int incre){
-    if ((Pos + incre) > 70) 
+    if ((Pos + incre) > 70)
         return 70 - Pos;
-    else if ((Pos + incre) < 1)
+    if ((Pos + incre) < 1)
         return 1 - Pos;
-    else 
-        return incre;    
+    return incre;    
 }
 
 //Prints the position of the H and T
@@ -80,7 +78,7 @@ void tortMove(int *tPtr,int move){
     if (1 <= move && move <= 5)
         *tPtr += min(*tPtr,3);
     else if (6 <= move && move <= 7)
-        *tPtr -= min(*tPtr,6);
+        *tPtr -= min(*tPtr,-6);
     else
         *tPtr += min(*tPtr,1);
 }
@@ -89,10 +87,10 @@ void tortMove(int *tPtr,int move){
 void hareMove(int *hPtr,int move){
     if (1 <= move && move <= 2)
         *hPtr += min(*hPtr,0);
-    if (3 <= move && move <=4)
+    else if (3 <= move && move <=4)
         *hPtr += min(*hPtr,9);
     else if (5 == move)
-        *hPtr -= min(*hPtr,12);
+        *hPtr -= min(*hPtr,-12);
     else if (6 <= move && move <= 8)
         *hPtr += min(*hPtr,1);
     else
