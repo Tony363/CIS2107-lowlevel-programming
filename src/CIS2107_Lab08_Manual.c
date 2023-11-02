@@ -13,6 +13,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include <stdint.h>
 
 //functions prototypes
 void * upperLower(const char * s);
@@ -80,7 +81,7 @@ int main() {
     printf("\n\nNumber of words in string is: %d\n", countWords(countstring));
 
     //test for startsWithB
-    char *series[] = {"bored", "hello", "Brother", "manual", "bothered"};
+    char *series[] = {"bored", "hello", "Brother", "manual", "bothered"}; // need sentinal value!!!!
     startsWithB(series);
 
     //test for endsWithed
@@ -226,13 +227,24 @@ int countWords(char *string) {
 
 //13.(Strings Starting with "b") 
 void startsWithB(char *string[]) {
-
- 
-
+    // char buf[20];
+    // strcpy(buf,(char *)string);
+    int len = strlen((char *)string) - 1;
+    printf("%d\n",len);
+    for (int i = 0; i < len; i++) {
+        if (tolower(string[i][0]) == 'b') {
+            puts(string[i]);
+        }
+    }
 }
 
 //14.(Strings Ending with "ed") 
 void endsWithed(char *string[]) {
-
-
+    int len = strlen((char *)string) - 1,stringlength = 0;
+    for (int i = 0; i < len; i++) {
+        stringlength = strlen(string[i]);
+        if (tolower(string[i][stringlength-1]) == 'd' && tolower(string[i][stringlength - 2]) == 'e') {
+            puts(string[i]);
+        }
+    }
 }
