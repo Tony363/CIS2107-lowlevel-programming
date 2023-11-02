@@ -28,8 +28,8 @@ int countSubstr (char * line, char * sub);
 int countChar (char * line, char c);
 int countWords(char *string);
 void countAlpha(char *string);
-void startsWithB(char *string[]);
-void endsWithed(char *string[]);
+void startsWithB(char *string[],int len);
+void endsWithed(char *string[],int len);
 
 int main() {
 
@@ -81,11 +81,12 @@ int main() {
     printf("\n\nNumber of words in string is: %d\n", countWords(countstring));
 
     //test for startsWithB
-    char *series[] = {"bored", "hello", "Brother", "manual", "bothered"}; // need sentinal value!!!!
-    startsWithB(series);
+    char *series[] = {"bored", "hello", "Brother", "manual", "bothered","WTF"}; // need sentinal value!!!!
+    int len = sizeof(series)/sizeof(series[0]);
+    startsWithB(series,len);
 
     //test for endsWithed
-    endsWithed(series);
+    endsWithed(series,len);
 
 }
 
@@ -143,12 +144,31 @@ void randomize(void) {
 
 //7.(Tokenizing Telephone Numbers) 
 int tokenizeTelNum(char *num) {
-    int area_code = 0,exchange = 0,line = 0;
-    sscanf(num,"(%d) %d-%d",&area_code,&exchange,&line);
-    printf("%d%d%d\n",area_code,exchange,line);
-    // char phone_number[12] = "";
-    // sprintf(phone_number,"%d %d%d",area_code,exchange,line);
-    // puts(phone_number);
+    // int area_code = 0,exchange = 0,line = 0;
+    // sscanf(num,"(%d) %d-%d",&area_code,&exchange,&line);
+    // printf("%d%d%d\n",area_code,exchange,line);
+    int tokens[3] = {0};
+    int token = atoi(strtok(num,"() -"));
+    tokens[0] = token;
+    int i = 0;
+    while (tokens[i] != NULL) {
+        // printf("%s\n",strtok(NULL, "() -"));
+        tokens[++i] = atoi((NULL, "() -"));
+    }    
+    // char *token = strtok(num,"() -");
+    // area_code = atoi(token);
+    // num += strlen(token);
+
+    // token = strtok(NULL,"() -");
+    // exchange = atoi(token);
+    // num += strlen(token);
+
+    // token = strtok(NULL,"() -");
+    // line = atoi(token);
+    // printf("%s %s %s\n",tokens[0],tokens[1],tokens[2]);
+    char phone_number[12]= "";
+    sprintf(phone_number,"%ld %ld%ld",tokens[0],tokens[1],tokens[2]);
+    puts(phone_number);
 }
 
 //8.(Displaying a Sentence with Its Words Reversed) 
@@ -226,25 +246,31 @@ int countWords(char *string) {
 }
 
 //13.(Strings Starting with "b") 
-void startsWithB(char *string[]) {
+void startsWithB(char *string[],int len) {
     // char buf[20];
     // strcpy(buf,(char *)string);
-    int len = strlen((char *)string) - 1;
-    printf("%d\n",len);
+    // int len = strlen((char *)string) - 1;
+    // int len = sizeof(string)/sizeof(string[0]);
+    // printf("%d\n",len);
     for (int i = 0; i < len; i++) {
         if (tolower(string[i][0]) == 'b') {
             puts(string[i]);
         }
     }
+    puts("");
 }
 
 //14.(Strings Ending with "ed") 
-void endsWithed(char *string[]) {
-    int len = strlen((char *)string) - 1,stringlength = 0;
+void endsWithed(char *string[],int len) {
+    int stringlength = 0;
+    // len = sizeof(string)/sizeof(string[0]);
+    // printf("%d\n",len);
+
     for (int i = 0; i < len; i++) {
         stringlength = strlen(string[i]);
         if (tolower(string[i][stringlength-1]) == 'd' && tolower(string[i][stringlength - 2]) == 'e') {
             puts(string[i]);
         }
     }
+    puts("");
 }
