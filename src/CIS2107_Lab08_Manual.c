@@ -113,18 +113,19 @@ float convertStrtoFloat(const char *s1, const char *s2, const char *s3, const ch
     return (float)(atof(s1) + atof(s2) + atof(s3) + atof(s4));
 }
 
-//4.(Comparing Strings) 
+//4.(Comparing Strings) TODO print via slide
 void compareStr(const char *s1, const char *s2) {
     int result = strcmp(s1,s2);
-    char *s = (result == 0)? "Strings are equal": (result < 0)? "String 1 is less than String 2":"String 1 is greater than String 2";
-    puts(s);
+    (result == 0)? printf("%s == %s",s1,s2): (result < 0)? printf("%s < %s",s1,s2):printf("%s > %s",s1,s2);
+    puts("");
 }
 
 //5.(Comparing Portions of Strings) 
 void comparePartialStr(const char *s1, const char *s2, int n) {
     int result = strncmp(s1,s2,n);
-    char *s = (result == 0)? "Strings are equal": (result < 0)? "String 1 is less than String 2":"String 1 is greater than String 2";
-    puts(s);
+    printf("%s","Comparison of first 4 chars: ");
+    (result == 0)? printf("%s = %s",s1,s2): (result < 0)? printf("%s < %s",s1,s2):printf("%s > %s",s1,s2);   
+    puts("");
 }
 
 //6.(Random Sentences) 
@@ -157,6 +158,7 @@ int tokenizeTelNum(char *num) {
     char phone_number[12]= "";
     sprintf(phone_number,"%d %d%d",tokens[0],tokens[1],tokens[2]);
     puts(phone_number);
+    return 0;
 }
 
 //8.(Displaying a Sentence with Its Words Reversed) 

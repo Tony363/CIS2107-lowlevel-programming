@@ -9,6 +9,8 @@ CIS 2107
 Lab 3: ATM
 */
 
+typedef unsigned int (*validate)(double,unsigned int);
+
 unsigned int validate_pin(double frac_part,unsigned int input){
     return (input == 3014);
 }
@@ -60,41 +62,49 @@ void balance(double money){
     printf("Your current Balance is - %lf\n",money);
 };
 
-double cash_withdrawal(double cur_balance,double money_withdrawn){
+double cash_withdrawal(double cur_balance,int choice, validate process[]){
+    double money_withdrawn = prompt_input("Please enter amount to deposit: ",process[choice]);
     cur_balance = cur_balance - money_withdrawn;
-    unsigned int choice = (unsigned int)prompt_input("Would you like to receive a receipt\n\tEnter [2] for No\n\tEnter [1] for Yes\n",validate_receipt);
+    choice = (unsigned int)prompt_input("Would you like to receive a receipt\n\tEnter [1] for Yes\n\tEnter [2] for No\n",process[4]);
     if (choice == 1)
         printf("%s","\tPrinting your receipt...\n\n");
     balance(cur_balance);
     return cur_balance;
 };
 
-double cash_deposition(double cur_balance, double money_deposit){
+double cash_deposition(double cur_balance, int choice,validate process[]){
+    double money_deposit = prompt_input("Please enter amount to withdraw: ",process[choice]);
     cur_balance = cur_balance + money_deposit;
-    unsigned int choice = (unsigned int)prompt_input("Would you like to receive a receipt\n\tEnter [2] for No\n\tEnter [1] for Yes\n",validate_receipt);
+    choice = (unsigned int)prompt_input("Would you like to receive a receipt\n\tEnter [1] for Yes\n\tEnter [2] for No\n",process[4]);
     if (choice == 1)
         printf("%s","\tPrinting your receipt...\n\n");
     balance(cur_balance);
     return cur_balance;
 };
 
-void menu(int trans_num,int nana_pin,double cur_trans_value,double init_balance){    
+void menu(
+    int trans_num,
+    int nana_pin,
+    double cur_trans_value,
+    double init_balance,
+    validate process[]
+){    
     char *menu_prompt = "Please enter your command\n\tEnter 1 for cash withdrawal\n\tEnter 2 for cash deposition\n\tEnter 3 to check balance\n\tEnter 4 to exit\n";
-    unsigned int choice = (unsigned int)prompt_input(menu_prompt,validate_menu);
+    unsigned int choice = (unsigned int)prompt_input(menu_prompt,process[3]);
 
     while (choice != 4){
         if (choice == 1){
-            init_balance = cash_withdrawal(init_balance,prompt_input("Please enter amount to withdraw: ",validate_withrawal));
+            init_balance = cash_withdrawal(init_balance,choice,process);
         }
         if (choice == 2){
-            init_balance = cash_deposition(init_balance,prompt_input("Please enter amount to deposit: ",validate_deposit));
+            init_balance = cash_deposition(init_balance,choice,process);
         }
         if (choice == 3){
             balance(init_balance);
             trans_num--;
         }
         trans_num ++;
-        choice = (unsigned int)prompt_input(menu_prompt,validate_menu);
+        choice = (unsigned int)prompt_input(menu_prompt,process[3]);
     };
     quit((unsigned int)trans_num);
 };
@@ -108,7 +118,15 @@ int main (int argc, char const *argv[]){
     double cur_trans_value = 0;
     double init_balance = 5000;
     const unsigned int nana_pin = 3014;
-    prompt_input("Please enter your pin # to continue ",validate_pin);
-    menu(trans_num,nana_pin,cur_trans_value,init_balance);
+    validate process[5] = {
+        validate_pin,
+        validate_withrawal,
+        validate_deposit,
+        validate_menu,
+        validate_receipt
+    };
+
+    prompt_input("Please enter your pin # to continue ",process[0]);
+    menu(trans_num,nana_pin,cur_trans_value,init_balance,process);
     return 0;
 }
