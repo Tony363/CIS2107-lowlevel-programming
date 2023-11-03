@@ -147,27 +147,15 @@ int tokenizeTelNum(char *num) {
     // int area_code = 0,exchange = 0,line = 0;
     // sscanf(num,"(%d) %d-%d",&area_code,&exchange,&line);
     // printf("%d%d%d\n",area_code,exchange,line);
-    int tokens[3] = {0};
+    int tokens[3] = {0}, i = 0;
+    char *temp = "";
     int token = atoi(strtok(num,"() -"));
     tokens[0] = token;
-    int i = 0;
-    while (tokens[i] != NULL) {
-        // printf("%s\n",strtok(NULL, "() -"));
-        tokens[++i] = atoi((NULL, "() -"));
+    while ((temp = strtok(NULL, "() -")) != NULL) {
+        tokens[++i] = atoi(temp);
     }    
-    // char *token = strtok(num,"() -");
-    // area_code = atoi(token);
-    // num += strlen(token);
-
-    // token = strtok(NULL,"() -");
-    // exchange = atoi(token);
-    // num += strlen(token);
-
-    // token = strtok(NULL,"() -");
-    // line = atoi(token);
-    // printf("%s %s %s\n",tokens[0],tokens[1],tokens[2]);
     char phone_number[12]= "";
-    sprintf(phone_number,"%ld %ld%ld",tokens[0],tokens[1],tokens[2]);
+    sprintf(phone_number,"%d %d%d",tokens[0],tokens[1],tokens[2]);
     puts(phone_number);
 }
 
