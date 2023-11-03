@@ -1,6 +1,6 @@
 /*
- * Name:	XXX	XXXX 
- * Section:	XX 
+ * Name:	Tony Siu 
+ * Section:	03
  * Lab:  	CIS2107_Lab08_Manual 
  * Goal: 	To design and implement functions taking pointers as arguments 
 			to process characters and strings.
@@ -264,3 +264,5 @@ void endsWithed(char *string[],int len) {
     }
     puts("");
 }
+// question 2 refer question 1, next question based on previous of next question
+// will need to write main function to call them in main

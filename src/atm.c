@@ -62,8 +62,8 @@ void balance(double money){
     printf("Your current Balance is - %lf\n",money);
 };
 
-double cash_withdrawal(double cur_balance,int choice, validate process[]){
-    double money_withdrawn = prompt_input("Please enter amount to deposit: ",process[choice]);
+double cash_withdrawal(double cur_balance,int choice, validate *process){
+    double money_withdrawn = prompt_input("Please enter amount to withdraw: ",process[choice]);
     cur_balance = cur_balance - money_withdrawn;
     choice = (unsigned int)prompt_input("Would you like to receive a receipt\n\tEnter [1] for Yes\n\tEnter [2] for No\n",process[4]);
     if (choice == 1)
@@ -72,8 +72,8 @@ double cash_withdrawal(double cur_balance,int choice, validate process[]){
     return cur_balance;
 };
 
-double cash_deposition(double cur_balance, int choice,validate process[]){
-    double money_deposit = prompt_input("Please enter amount to withdraw: ",process[choice]);
+double cash_deposition(double cur_balance, int choice,validate *process){
+    double money_deposit = prompt_input("Please enter amount to deposit: ",process[choice]);
     cur_balance = cur_balance + money_deposit;
     choice = (unsigned int)prompt_input("Would you like to receive a receipt\n\tEnter [1] for Yes\n\tEnter [2] for No\n",process[4]);
     if (choice == 1)
@@ -87,7 +87,7 @@ void menu(
     int nana_pin,
     double cur_trans_value,
     double init_balance,
-    validate process[]
+    validate *process
 ){    
     char *menu_prompt = "Please enter your command\n\tEnter 1 for cash withdrawal\n\tEnter 2 for cash deposition\n\tEnter 3 to check balance\n\tEnter 4 to exit\n";
     unsigned int choice = (unsigned int)prompt_input(menu_prompt,process[3]);
