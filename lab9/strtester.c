@@ -42,12 +42,12 @@ int main(){
     char *p = pad(s16, 5);
     printf("%s\n", p);
     char s17[] = "Hello World";
-    char t[] = "o W";
-    char *p = ptr_to(s17,t);
-    printf("%s\n",p);
+    char t1[] = "o W";
+    char *p1 = ptr_to(s17,t1);
+    printf("%s\n",p1);
     char *s18 = "Hello World";
-    char *p = repeat(s18, 2, '-');
-    printf("%s\n", p);
+    char *p3 = repeat(s18, 2, '-');
+    printf("%s\n", p3);
     char *s19 = "Hello World",*pat = "l",*rep = "LOLZ";
     printf("%s\n",replace(s19,pat,rep));
     char **words = malloc(4 * sizeof(char *));
@@ -73,9 +73,9 @@ int main(){
     printf("%s\n",s23);
     char *str = "I am ready for a nice vacation";
     char **arr = str_chop_all(str,' ');
-    int i = 0;
-    while (arr[i++] != NULL)
-        printf("%s\n",arr[i - 1]);    
+    int i1 = 0;
+    while (arr[i1++] != NULL)
+        printf("%s\n",arr[i1 - 1]);    
     char *strs[] = {"Hello","World","!"};
     printf("%s\n",str_connect(strs,3,'-'));
     char *s24 = "Tony";

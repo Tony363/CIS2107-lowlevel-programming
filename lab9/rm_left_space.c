@@ -14,9 +14,9 @@ void rm_left_space(char *s1){
     s1[j] = '\0';
 }
 
-int main(){
-    char s[] = "   Hello World";
-    rm_left_space(s);
-    printf("%s\n",s);
-    return 0;
-}
+// int main(){
+//     char s[] = "   Hello World";
+//     rm_left_space(s);
+//     printf("%s\n",s);
+//     return 0;
+// }

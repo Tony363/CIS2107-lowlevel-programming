@@ -13,8 +13,8 @@ void capitalize(char *s1){
     }
 }
 
-int main(){
-    char s[] = "hello WORLD";
-    capitalize(s);
-    puts(s);
-}
+// int main(){
+//     char s[] = "hello WORLD";
+//     capitalize(s);
+//     puts(s);
+// }

@@ -18,10 +18,10 @@ char *ptr_to(char *h,char *n){
     return NULL;
 }
 
-int main(){
-    char s[] = "Hello World";
-    char t[] = "o W";
-    char *p = ptr_to(s,t);
-    printf("%s\n",p);
-    return 0;
-}
+// int main(){
+//     char s[] = "Hello World";
+//     char t[] = "o W";
+//     char *p = ptr_to(s,t);
+//     printf("%s\n",p);
+//     return 0;
+// }

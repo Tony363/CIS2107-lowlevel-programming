@@ -5,9 +5,9 @@ char **str_chop_all(char *s, char c){
     char **arr = malloc(sizeof(char *)*50);
     char *s_iter = s,*start = s,**arr_iter = arr,*str = NULL,*str_temp = NULL;
     while (*s_iter){
-        if (*s_iter == c){
+        if (*s_iter == c || *(s_iter + 1) == '\0'){
             str = str_temp = (char *)malloc(sizeof(char)*(s_iter - start + 1));
-            while (start < s_iter){
+            while (start <= s_iter){
                 *str_temp++ = *start++;
             }
             *arr_iter = str;
@@ -16,7 +16,7 @@ char **str_chop_all(char *s, char c){
         }
         s_iter++;
     }
-    *arr_iter = NULL;
+    *++arr_iter = NULL;
     return arr;
 }
 

@@ -22,8 +22,8 @@ char* str_zip(char *s1, char *s2){
     return zipped - flag;
 }
 
-int main(){
-    char *s1 = "Tony";
-    char *s2 = "Siu";
-    puts(str_zip(s1,s2));
-}
+// int main(){
+//     char *s1 = "Tony";
+//     char *s2 = "Siu";
+//     puts(str_zip(s1,s2));
+// }

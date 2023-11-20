@@ -22,9 +22,9 @@ char *pad(char *s,int d){
     return out;
 }
 
-int main(){
-    char *s = "Hello World";
-    char *p = pad(s, 5);
-    printf("%s\n", p);
-    return 0;
-}
+// int main(){
+//     char *s = "Hello World";
+//     char *p = pad(s, 5);
+//     printf("%s\n", p);
+//     return 0;
+// }

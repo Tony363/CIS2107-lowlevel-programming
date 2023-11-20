@@ -23,7 +23,6 @@ char *replace(char *s, char *pat, char *rep){
         s++;
     }   
     out_iter = '\0';
-    out = realloc(out,out_iter - out);
     return out;
 }
 

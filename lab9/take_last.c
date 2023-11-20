@@ -13,9 +13,9 @@ void take_last(char *s,int n){
     s[j] = '\0';
 }
 
-int main(){
-    char s[] = "Hello World";
-    take_last(s, 2);
-    printf("%s\n", s);
-    return 0;
-}
+// int main(){
+//     char s[] = "Hello World";
+//     take_last(s, 2);
+//     printf("%s\n", s);
+//     return 0;
+// }

@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int is_empty(char *str){
+int _is_empty(char *str){
     return str == NULL || *str == '\0';
 }
 
@@ -10,7 +10,7 @@ void rm_empties(char **words){
         return;
     int i = 0,j = 0;
     while (words[j] != NULL) {
-        if (!is_empty(words[j])) 
+        if (!_is_empty(words[j])) 
             words[i++] = words[j];
         j++;
     }

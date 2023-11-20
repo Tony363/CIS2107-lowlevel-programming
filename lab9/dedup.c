@@ -18,8 +18,8 @@ char *dedup(char *s){
     return out;
 }
 
-int main(){
-    char s[] = "Hello World";
-    printf("%s\n", dedup(s));
-    return 0;
-}
+// int main(){
+//     char s[] = "Hello World";
+//     printf("%s\n", dedup(s));
+//     return 0;
+// }

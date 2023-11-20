@@ -19,9 +19,9 @@ int find(char *h, char *n){
     return -1;
 }
 
-int main(){
-    char h[] = "Hello World";
-    char n[] = "o W";
-    printf("%d\n",find(h,n));
-    return 0;
-}
+// int main(){
+//     char h[] = "Hello World";
+//     char n[] = "o W";
+//     printf("%d\n",find(h,n));
+//     return 0;
+// }

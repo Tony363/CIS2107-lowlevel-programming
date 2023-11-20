@@ -15,8 +15,8 @@ int strcmp_ign_case(char *s1, char *s2){
     // TODO edge case different string length, strip leading and ending white spaces
 }
 
-int main(){
-    char s1[] = "zello";
-    char s2[] = "hello";
-    printf("%d\n", strcmp_ign_case(s1, s2));
-}
+// int main(){
+//     char s1[] = "zello";
+//     char s2[] = "hello";
+//     printf("%d\n", strcmp_ign_case(s1, s2));
+// }

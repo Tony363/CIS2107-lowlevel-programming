@@ -18,9 +18,9 @@ int ends_with_ignore_case(char *s, char *suff){
     return 1;
 }
 
-int main(){
-    char s[] = "Hello World";
-    char suff[] = "world";
-    printf("%d\n", ends_with_ignore_case(s, suff));
-    return 0;
-}
+// int main(){
+//     char s[] = "Hello World";
+//     char suff[] = "world";
+//     printf("%d\n", ends_with_ignore_case(s, suff));
+//     return 0;
+// }

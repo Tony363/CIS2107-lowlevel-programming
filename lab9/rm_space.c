@@ -29,9 +29,9 @@ void rm_space(char *s){
     end = '\0';
 }
 
-int main(){
-    char s[] = "   Hello World   ";
-    rm_space(s);
-    printf("%s\n",s);
-    return 0;
-}
+// int main(){
+//     char s[] = "   Hello World   ";
+//     rm_space(s);
+//     printf("%s\n",s);
+//     return 0;
+// }
