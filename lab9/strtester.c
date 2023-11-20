@@ -1,7 +1,91 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "strtester.h"
 
 int main(){
-    
+    char *s = "Hello";
+    printf("%d\n", all_letters(s));
+    char *s1 = "HELLO";
+    printf("%d\n", all_letters(s1));
+    char *s2 = "hello";
+    printf("%d\n", all_letters(s2));
+    char s3[] = "hello WORLD";
+    capitalize(s3);
+    puts(s3);
+    char s4[] = "Hello World";
+    printf("%s\n", dedup(s4));
+    char *s5= "Hello";
+    char *s6 = "Hello";
+    printf("%d\n", diff(s5, s6));
+    char *s7 = "Hello";
+    char *s8 = "Hella     ";
+    printf("%d\n", diff(s7, s8));
+    char s9[] = "Hello World";
+    char suff[] = "world";
+    printf("%d\n", ends_with_ignore_case(s9, suff));
+    char h[] = "Hello World";
+    char n[] = "o W";
+    printf("%d\n",find(h,n));
+    char s10[] = "a ";
+    printf("%d\n",is_empty(s10));
+    char *s11 = "Hello";
+    char *s12 = "Hello";
+    printf("%d\n", len_diff(s11, s12));
+    char *s13 = "Hello";
+    char *s14 = "Hella hello";
+    printf("%d\n", len_diff(s13, s14));
+    char *s15 = "hello";
+    char b = 'a';
+    char t = 'b';
+    printf("%d\n", num_in_range(s15, b, t));
+    char *s16 = "Hello World";
+    char *p = pad(s16, 5);
+    printf("%s\n", p);
+    char s17[] = "Hello World";
+    char t[] = "o W";
+    char *p = ptr_to(s17,t);
+    printf("%s\n",p);
+    char *s18 = "Hello World";
+    char *p = repeat(s18, 2, '-');
+    printf("%s\n", p);
+    char *s19 = "Hello World",*pat = "l",*rep = "LOLZ";
+    printf("%s\n",replace(s19,pat,rep));
+    char **words = malloc(4 * sizeof(char *));
+    words[0] = "Hello";
+    words[1] = "";
+    words[2] = "World";
+    words[3] = NULL;
+    rm_empties(words);
+    int i = 0;
+    while (words[i++] != NULL)
+        printf("%s\n",words[i - 1]);
+    char s20[] = "   Hello World";
+    rm_left_space(s20);
+    printf("%s\n",s20);
+    char s21[] = "Hello World 1  ";
+    rm_right_space(s21);
+    printf("%s\n",s21);
+    char s22[] = "   Hello World   ";
+    rm_space(s22);
+    printf("%s\n",s22);
+    char s23[] = "Hello World";
+    shorten(s23,5);
+    printf("%s\n",s23);
+    char *str = "I am ready for a nice vacation";
+    char **arr = str_chop_all(str,' ');
+    int i = 0;
+    while (arr[i++] != NULL)
+        printf("%s\n",arr[i - 1]);    
+    char *strs[] = {"Hello","World","!"};
+    printf("%s\n",str_connect(strs,3,'-'));
+    char *s24 = "Tony";
+    char *s25 = "Siu";
+    puts(str_zip(s24,s25));
+    char s26[] = "zello";
+    char s27[] = "hello";
+    printf("%d\n", strcmp_ign_case(s26, s27));
+    char s28[] = "Hello World";
+    take_last(s28, 2);
+    printf("%s\n", s28);
     return 0;
 }
