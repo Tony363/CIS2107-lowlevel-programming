@@ -3,10 +3,9 @@
 char *ptr_to(char *h,char *n){
     if (h == NULL || n == NULL)
         return NULL;
-    // int i = 0, j = 0,k = 0;
     char *k = h,*temp = n;
     while (*h) {
-        if (*temp == '\0') 
+        if (*(temp + 1) == '\0') 
             return k;
         if (*h == *temp) {
             temp++;
@@ -17,4 +16,12 @@ char *ptr_to(char *h,char *n){
         h++;
     }
     return NULL;
+}
+
+int main(){
+    char s[] = "Hello World";
+    char t[] = "o W";
+    char *p = ptr_to(s,t);
+    printf("%s\n",p);
+    return 0;
 }

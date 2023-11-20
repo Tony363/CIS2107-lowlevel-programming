@@ -1,5 +1,6 @@
 #include <stdio.h>
 
+// TODO finish not same length
 int diff(char *s1, char *s2){
     int count = 0;
     while (*s1 || *s2) {

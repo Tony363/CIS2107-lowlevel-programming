@@ -11,5 +11,6 @@ int strcmp_ign_case(char *s1, char *s2){
         s1++;
         s2++;   
     }
-    return 0;// TODO edge case different string length?
+    return 0;
+    // TODO edge case different string length, strip leading and ending white spaces
 }
