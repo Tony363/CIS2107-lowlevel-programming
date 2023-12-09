@@ -1,18 +1,19 @@
 #include <stdio.h>
+#include <string.h>
 
 int is_diaglogue(char *line){
     if (line[0] == '\"')
         return 1;
-    while (line++ != '\0'){
-        if (line[0] == '\"')
-            return 1;
-    }
+    int len = strlen(line);
+    while (line[len--] != '\"')
+    if (line[len] == '\"')
+        return 1;
     return 0;
 }
 
 
 void _southernize(char *line){
-    
+    return;
 }
 
 void southernize(FILE *infile,FILE *outfile){
