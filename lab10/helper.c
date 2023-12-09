@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <ctype.h>
 
 int is_diaglogue(char cur_char){
-    // printf("%c",cur_char);
     return (cur_char == '"');
 }
 
@@ -48,16 +48,27 @@ int is_vowel(char ch){
     return ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u';
 }
 
-void southernize(FILE *infile,FILE *outfile){
+int is_very(char* window){
+    return tolower(window[0]) == 'v' && tolower(window[1]) == 'e' && tolower(window[2]) == 'r' && tolower(window[3]) == 'y';
+}
+
+
+
+void southernize(FILE* infile,FILE* outfile){
     int end = -1;
     long int start_pos = 0,end_pos = 0;
     char window[4] = {0};
     char *buffer = NULL;
     while ((window[3] = fgetc(infile)) != EOF){
         end += (int)is_diaglogue(window[1]);
-        if (!(end % 2) && s_vowel(window[0]) && tolower(window[1]) == 'r')
+        if (is_very(window)){
+            fseek(outfile,-3,SEEK_CUR);
+            fputs("wicked",outfile);
+        }
+
+        if (!(end % 2) && is_vowel(window[1]) && tolower(window[2]) == 'r')
             window[1] = 'h';
-        if (!(end % 2) &&  window[2] == ' ' && tolower(window[1]) == 'a')
+        if (!(end % 2) &&  window[3] == ' ' && tolower(window[2]) == 'a')
             fputc('r',outfile);
         // if (!start_pos && (end % 2) == 0)
         //     start_pos = ftell(infile);
@@ -68,12 +79,12 @@ void southernize(FILE *infile,FILE *outfile){
         //     puts(buffer);
         //     start_pos = end_pos = 0;
         // }
-        if (end > 10)
+        if (end > 6)
             break;
         window[0] = window[1];  
         window[1] = window[2];
         window[2] = window[3];
         fputc(window[2], outfile);
     }
-    fputc(window[2], outfile);
+    fputc(window[3], outfile);
 }
