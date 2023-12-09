@@ -9,8 +9,8 @@ int main(int argc, char **argv){
         return 1;
     }
 
-    FILE *infile = fopen(argv[1], "r"),*outfile = fopen("southie_sherlock.txt", "w");
-    if (file == NULL) {
+    FILE *infile = fopen(argv[1], "rb"),*outfile = fopen("southie_sherlock.txt", "wb");
+    if (infile == NULL) {
         perror("Error opening file");
         return 1;
     }
