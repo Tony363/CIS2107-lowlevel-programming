@@ -35,7 +35,7 @@ void print_queue(char* queue,int char_iter){
 }
 
 int is_diaglogue(char cur_char){
-    return (cur_char == '"');
+    return cur_char == '"';
 }
 
 int is_vowel(char ch){
@@ -55,7 +55,6 @@ int is_very(char* queue, int char_iter){
 }
 
 int is_yah(char* queue,int char_iter){
-    // print_queue(queue,char_iter);
     return (tolower(queue[char_iter % 4] == 's' || tolower(queue[char_iter % 4]) == ' ') || tolower(queue[char_iter % 4]) == '.')
         && (tolower(queue[(char_iter - 1) % 4]) == 'r')// || tolower(queue[(char_iter - 1) % 4]) == 'h')
         && ((tolower(queue[(char_iter - 3) % 4]) == 'e' && tolower(queue[(char_iter - 2) % 4]) == 'e') || tolower(queue[(char_iter - 2) % 4]) == 'i');
@@ -68,34 +67,37 @@ int is_wah(char *queue,int char_iter){
         && tolower(queue[(char_iter - 2) % 4]) == 'o';
 }
 
+
 void southernize(FILE* infile,FILE* outfile){
     int end = -1,char_iter = 0;
     char queue[4] = {0}; 
     queue[char_iter++ % 4] = fgetc(infile);
     while ((queue[char_iter % 4] = fgetc(infile)) != EOF){
-        end += (int)is_diaglogue(queue[char_iter % 4]);
+        end += is_diaglogue(queue[char_iter % 4]);
         if (!(end % 2) && is_very(queue,char_iter)){
             fseek(outfile,-3,SEEK_CUR);
-            fputs("wicked ",outfile);
+            fputs(" wicked",outfile);
             queue[char_iter++ % 4] = fgetc(infile);
             continue;
         }
+        if (!(end % 2) &&  queue[char_iter % 4] == ' ' && tolower(queue[(char_iter - 1) % 4]) == 'a'){
+            fputs("ar ",outfile);
+            queue[char_iter++ % 4] = fgetc(infile);
+            continue;
+        }  
         if (!(end % 2) && is_yah(queue,char_iter)){
-            fseek(outfile,-1,SEEK_CUR);
-            fputs("yah",outfile);
+            fputs("ya",outfile);
         }
         if (!(end % 2) && is_wah(queue,char_iter)){
-            fseek(outfile,-1,SEEK_CUR);
-            fputs("wah",outfile);
+            fputs("wa",outfile);
         }
-        if (!(end % 2) && is_vowel(queue[(char_iter - 1) % 4]) && tolower(queue[char_iter % 4]) == 'r')
-            queue[char_iter % 4] = 'h';
-        if (!(end % 2) &&  queue[char_iter % 4] == ' ' && tolower(queue[(char_iter - 1) % 4]) == 'a')
-            fputc('r',outfile);
-
-        // if (end > 80)
-        //     break;
-        fputc(queue[char_iter % 4], outfile);
+        if (!(end % 2) 
+            && is_vowel(queue[(char_iter - 2) % 4]) 
+            && tolower(queue[(char_iter - 1) % 4]) == 'r'
+            && tolower(queue[char_iter % 4]) != ' ')
+            queue[(char_iter - 1) % 4] = 'h';
+     
+        fputc(queue[(char_iter - 1) % 4], outfile);
         char_iter++;
     }
 }

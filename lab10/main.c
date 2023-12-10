@@ -16,5 +16,6 @@ int main(int argc, char **argv){
     }
     southernize(infile,outfile);
     fclose(infile);
+    fclose(outfile);
     return 0;
 }
