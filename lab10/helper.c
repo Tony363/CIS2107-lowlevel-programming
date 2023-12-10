@@ -54,15 +54,21 @@ int is_very(char* queue, int char_iter){
         && tolower(queue[char_iter % 4]) == 'y';
 }
 
+int is_word_end(char *queue,int char_iter){
+    return tolower(queue[char_iter % 4]) == ' ' 
+        || tolower(queue[char_iter % 4]) == '.'
+        || tolower(queue[char_iter % 4]) == 's';
+
+}
+// TODO FIX ME for "first" test case
 int is_yah(char* queue,int char_iter){
-    return (tolower(queue[char_iter % 4] == 's' || tolower(queue[char_iter % 4]) == ' ') || tolower(queue[char_iter % 4]) == '.')
-        && (tolower(queue[(char_iter - 1) % 4]) == 'r')// || tolower(queue[(char_iter - 1) % 4]) == 'h')
-        && ((tolower(queue[(char_iter - 3) % 4]) == 'e' && tolower(queue[(char_iter - 2) % 4]) == 'e') || tolower(queue[(char_iter - 2) % 4]) == 'i');
+    return (is_word_end(queue,char_iter) && tolower(queue[(char_iter - 1) % 4]) == 'r' && tolower(queue[(char_iter - 2) % 4]) == 'e' && tolower(queue[(char_iter - 3) % 4]) == 'e') 
+        || (is_word_end(queue,char_iter) && tolower(queue[(char_iter - 2) % 4]) == 'i' && tolower(queue[(char_iter - 1) % 4]) == 'r');
 }
 
 int is_wah(char *queue,int char_iter){
     return (tolower(queue[char_iter % 4] == 's' || tolower(queue[char_iter % 4]) == ' ') || tolower(queue[char_iter % 4]) == '.')
-        && (tolower(queue[(char_iter - 1) % 4]) == 'r')// || tolower(queue[(char_iter - 1) % 4]) == 'h')
+        && (tolower(queue[(char_iter - 1) % 4]) == 'r')
         && tolower(queue[(char_iter - 3) % 4]) == 'o' 
         && tolower(queue[(char_iter - 2) % 4]) == 'o';
 }
@@ -100,4 +106,5 @@ void southernize(FILE* infile,FILE* outfile){
         fputc(queue[(char_iter - 1) % 4], outfile);
         char_iter++;
     }
+    fputc(queue[char_iter % 4], outfile);
 }

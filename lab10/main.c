@@ -3,6 +3,17 @@
 #include <string.h>
 #include "southern.h"
 
+/*
+Name: Tony Siu
+Date: 12/10/2023
+Course: CSI2107 
+HW#: Lab 10: Southernize
+
+compile -> gcc -I/./ -o south -g main.c helper.c
+sample run -> ./south sherklock.txt
+*/
+
+// TODO fix edge cases
 int main(int argc, char **argv){
     if (argc < 2) {
         fprintf(stderr, "Usage: %s <filename>\n", argv[0]);
@@ -16,6 +27,4 @@ int main(int argc, char **argv){
     }
     southernize(infile,outfile);
     fclose(infile);
-    fclose(outfile);
-    return 0;
-}
+    fclose(out
