@@ -13,7 +13,6 @@ compile -> gcc -I/./ -o south -g main.c helper.c
 sample run -> ./south sherklock.txt
 */
 
-// TODO fix edge cases
 int main(int argc, char **argv){
     if (argc < 2) {
         fprintf(stderr, "Usage: %s <filename>\n", argv[0]);

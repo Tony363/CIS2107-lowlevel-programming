@@ -3,31 +3,6 @@
 #include <stdlib.h>
 #include <ctype.h>
 
-char *_southernize(FILE *infile,long int start_pos,long int end_pos){
-    FILE *cur_pos = infile;
-    if (start_pos >= end_pos) {
-        fprintf(stderr, "Invalid start and end positions.\n");
-        return NULL;
-    }
-
-    long length = end_pos - start_pos;
-    char *buffer = malloc(length + 1); // +1 for null terminator
-    if (buffer == NULL) {
-        perror("Failed to allocate memory");
-        return NULL;
-    }
-
-    fseek(infile, start_pos, SEEK_SET);
-    if (fread(buffer, 1, length, infile) != length) {
-        fprintf(stderr, "Failed to read the file.\n");
-        free(buffer);
-        return NULL;
-    }
-    buffer[length] = '\0'; // Null-terminate the string
-    fseek(infile, end_pos, SEEK_SET);
-    return buffer;
-}
-
 void print_queue(char* queue,int char_iter){
     for (int i = 0; i < 4; i++)
         printf("%c",queue[(char_iter - 4 + i) % 4]);
@@ -63,7 +38,6 @@ int is_word_end(char *queue,int char_iter){
         || tolower(queue[char_iter % 4]) == '\t';
 }
 
-// TODO FIX ME for "first" test case
 int is_yah(char* queue,int char_iter){
     // if (tolower(queue[(char_iter - 2) % 4]) == 'i' && tolower(queue[(char_iter - 1) % 4]) == 'r' && is_word_end(queue,char_iter)){
     //     puts("yah");
