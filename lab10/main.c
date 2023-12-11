@@ -19,7 +19,7 @@ int main(int argc, char **argv){
         return 1;
     }
 
-    FILE *infile = fopen(argv[1], "rb"),*outfile = fopen("southie_sherlock.txt", "wb");
+    FILE *infile = fopen(argv[1], "rb"),*outfile = fopen("southie-sherlock.txt", "wb");
     if (infile == NULL) {
         perror("Error opening file");
         return 1;
