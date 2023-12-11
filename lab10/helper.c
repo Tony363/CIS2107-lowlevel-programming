@@ -65,8 +65,20 @@ int is_word_end(char *queue,int char_iter){
 
 // TODO FIX ME for "first" test case
 int is_yah(char* queue,int char_iter){
-    return (is_word_end(queue,char_iter) && tolower(queue[(char_iter - 1) % 4]) == 'r' && tolower(queue[(char_iter - 2) % 4]) == 'e' && tolower(queue[(char_iter - 3) % 4]) == 'e') 
-        || (is_word_end(queue,char_iter) && tolower(queue[(char_iter - 2) % 4]) == 'i' && tolower(queue[(char_iter - 1) % 4]) == 'r');
+    // if (tolower(queue[(char_iter - 2) % 4]) == 'i' && tolower(queue[(char_iter - 1) % 4]) == 'r' && is_word_end(queue,char_iter)){
+    //     puts("yah");
+    //     return 1;
+    // }
+    return (
+        (tolower(queue[(char_iter - 2) % 4]) == 'i' 
+        && tolower(queue[(char_iter - 1) % 4]) == 'r'
+        && is_word_end(queue,char_iter))
+        ||
+        (is_word_end(queue,char_iter) 
+        && tolower(queue[(char_iter - 1) % 4]) == 'r' 
+        && tolower(queue[(char_iter - 2) % 4]) == 'e' 
+        && tolower(queue[(char_iter - 3) % 4]) == 'e')
+    );
 }
 
 int end_with_a(char *queue,int char_iter){
